@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-#include "PyUtils.cpp"
-#include "PyObjs.h"
+#include "PyUtils.h"
+#include "PyObjs.cpp"
 
 using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    int i = stoi(pyUtils::pyInput("Type in a number: "));
-    cout << typeid(i).name() << " " << i;
+    PyObject<int> pyObj(123);
+    cout << pyObj.getValue();
     return 0;
 }

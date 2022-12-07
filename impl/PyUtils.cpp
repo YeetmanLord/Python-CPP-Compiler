@@ -1,14 +1,13 @@
 #include <iostream>
 #include <string>
+#include "PyUtils.h"
 
 using namespace std;
 
-namespace pyUtils
+string pyUtils::pyInput(string prompt)
 {
-    string pyInput(string prompt) {
-        cout << prompt;
-        string val;
-        cin >> val;
-        return val;
-    }
-} // namespace pyUtils
+    cout << prompt;
+    string val;
+    cin >> val;
+    return val;
+}
