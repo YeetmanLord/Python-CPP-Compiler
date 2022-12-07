@@ -1,4 +1,7 @@
+#include <iostream>
 #include <string>
+
+using namespace std;
 
 template <typename PrimType>
 class PyObject {
@@ -6,41 +9,59 @@ class PyObject {
         PrimType value;
         string pyType;
     public:
-        friend PrimType getValue();
-        friend void setValue(PrimType newValue);
+        PrimType getValue();
+        void setValue(PrimType newValue);
 
         // Assignment
-        friend PyObject &operator=(const PyObject &);
+        PyObject &operator=(const PyObject<PrimType> &);
 
         // Increment
-        friend PyObject &operator++();
-        friend PyObject operator++(PrimType temp);
-        friend PyObject &operator--();
-        friend PyObject operator--(PrimType temp);
+        PyObject &operator++();
+        template <class PyObject>
+        friend PyObject operator++(PyObject temp);
+        PyObject &operator--();
+        template <class PyObject>
+        friend PyObject operator--(PyObject temp);
 
         // Addition/Subtraction
+        template <class PyObject>
         friend PyObject operator+(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend PyObject operator-(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend PyObject &operator+=(PyObject &, const PyObject &);
+        template <class PyObject>
         friend PyObject &operator-=(PyObject &, const PyObject &);
 
         // Multiplication/Division
+        template <class PyObject>
         friend PyObject operator*(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend PyObject operator/(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend PyObject &operator*=(PyObject &, const PyObject &);
+        template <class PyObject>
         friend PyObject &operator/=(PyObject &, const PyObject &);
 
         // Power
+        template <class PyObject>
         friend PyObject operator^(const PyObject &, const PyObject &);
-        friend PyObject &operator^=(const PyObject &);
+        template <class PyObject>
+        friend PyObject &PyObject::operator^=(const PyObject &);
 
         // Comparision
+        template <class PyObject>
         friend bool operator==(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend bool operator!=(const PyObject &, const PyObject &);
     
+        template <class PyObject>
         friend bool operator>(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend bool operator>=(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend bool operator<(const PyObject &, const PyObject &);
+        template <class PyObject>
         friend bool operator<=(const PyObject &, const PyObject &);
 
 };

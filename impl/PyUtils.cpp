@@ -3,9 +3,12 @@
 
 using namespace std;
 
-string pyInput(string prompt) {
-    cout << prompt;
-    string val;
-    cin >> val;
-    return val;
-}
+namespace pyUtils
+{
+    string pyInput(string prompt) {
+        cout << prompt;
+        string val;
+        cin >> val;
+        return val;
+    }
+} // namespace pyUtils
