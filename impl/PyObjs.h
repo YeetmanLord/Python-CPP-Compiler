@@ -78,10 +78,10 @@ class PyObject {
         // friend PyObject sqrt(PyObject &a);
     
         // //Read and Write
-        // template <class PyObject>
-        // friend ostream &operator<<(ostream &,const PyObject &);
-        // template <class PyObject>
-        // friend istream &operator>>(istream &, PyObject &);
+        template <class PyObject>
+        ostream &operator<<(ostream &,const PyObject &);
+        template <class PyObject>
+        istream &operator>>(istream &, const PyObject &);
 
 
 

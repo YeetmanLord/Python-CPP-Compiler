@@ -79,3 +79,9 @@ PyObject<PrimType> &PyObject<PrimType>::operator++()
     ++value;
     return *this;
 }
+
+template <typename PrimType>
+ostream &PyObject<PrimType>::operator<<(ostream &outstream, const PyObject &obj) {
+    outstream << obj.value;
+    return outstream;
+}
