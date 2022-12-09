@@ -79,6 +79,11 @@ string PyObject<PrimType>::getPyType()
 }
 
 template <typename PrimType>
+string PyObject<PrimType>::toString() {
+    return to_string(value);
+}
+
+template <typename PrimType>
 PyObject<PrimType> &PyObject<PrimType>::operator=(const PyObject<PrimType> &other)
 {
     value = other.value;
@@ -89,32 +94,23 @@ PyObject<PrimType> &PyObject<PrimType>::operator=(const PyObject<PrimType> &othe
 template <typename PrimType>
 PyObject<PrimType> &PyObject<PrimType>::operator++()
 {
-    ++value;
-    return *this;
+    if (pyType == "int" || pyType == "float")
+    {
+        ++value;
+        return *this;
+    }
+    throw("Invalid Operation Exception: Cannot increment a " + pyType);
 }
 
 template <typename PrimType>
-ostream &operator<<(ostream &os, PyObject<PrimType> &obj)
+PyObject<PrimType> PyObject<PrimType>::operator++(int temp)
 {
-    os << obj.getValue();
-    return os;
-}
-
-template <typename PrimType>
-istream &operator>>(istream &is, PyObject<PrimType> &obj)
-{
-    string s;
-    is >> s;
-    // PARSE THE TYPE FROM CONTEXT
-    obj.setValue(s);
-
-    return is;
-}
-
-static PyObject<string> pyInputObject(string prompt) {
-    cout << prompt;
-    string val;
-    getline(cin, val);
-    const string cval = val;
-    return PyObject<string>(cval);
+    if (pyType == "int" || pyType == "float")
+    {
+        PyObject<PrimType> aux;
+        aux = *this;
+        ++(*this);
+        return aux;
+    }
+    throw("Invalid Operation Exception: Cannot increment a " + pyType);
 }

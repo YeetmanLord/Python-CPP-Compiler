@@ -1,88 +1,108 @@
+#ifndef _PY_OBJ
+
+#define _PY_OBJ
+
 #include <iostream>
 #include <string>
 
 using namespace std;
 
 template <typename PrimType>
-class PyObject {
-    private:
-        PrimType value;
-        string pyType;
-    public:
-        PyObject();
-        PyObject(const PyObject &);
-        PyObject(const PrimType &);
+class PyObject
+{
+private:
+    PrimType value;
+    string pyType;
 
-        PrimType getValue();
-        void setValue(PrimType newValue);
+public:
+    PyObject();
+    PyObject(const PyObject &);
+    PyObject(const PrimType &);
 
-        string getPyType();
+    PrimType getValue();
+    void setValue(PrimType newValue);
 
-        // Assignment
-        PyObject &operator=(const PyObject<PrimType> &);
+    string getPyType();
 
-        // Increment
-        PyObject &operator++();
-        template <class PyObject>
-        friend PyObject operator++(PyObject temp);
-        // PyObject &operator--();
-        // template <class PyObject>
-        // friend PyObject operator--(PyObject temp);
+    string toString();
 
-        // Addition/Subtraction
-        // template <class PyObject>
-        // friend PyObject operator+(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject operator-(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject &operator+=(PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject &operator-=(PyObject &, const PyObject &);
+    // Assignment
+    PyObject &operator=(const PyObject<PrimType> &);
 
-        // // Multiplication/Division
-        // template <class PyObject>
-        // friend PyObject operator*(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject operator/(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject &operator*=(PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject &operator/=(PyObject &, const PyObject &);
+    // Increment
+    PyObject &operator++();
+    PyObject operator++(int temp);
+    // PyObject &operator--();
+    // template <class PyObject>
+    // PyObject operator--(PyObject temp);
 
-        // // Power
-        // template <class PyObject>
-        // friend PyObject operator^(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject &PyObject::operator^=(const PyObject &);
+    // Addition/Subtraction
+    // template <class PyObject>
+    // friend PyObject operator+(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject operator-(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject &operator+=(PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject &operator-=(PyObject &, const PyObject &);
 
-        // // Comparision
-        // template <class PyObject>
-        // friend bool operator==(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend bool operator!=(const PyObject &, const PyObject &);
-    
-        // template <class PyObject>
-        // friend bool operator>(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend bool operator>=(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend bool operator<(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend bool operator<=(const PyObject &, const PyObject &);
+    // // Multiplication/Division
+    // template <class PyObject>
+    // friend PyObject operator*(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject operator/(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject &operator*=(PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject &operator/=(PyObject &, const PyObject &);
 
-        // // Modulo
-        // template <class PyObject>
-        // friend PyObject operator%(const PyObject &, const PyObject &);
-        // template <class PyObject>
-        // friend PyObject &operator%=(PyObject &, const PyObject &);
-        
-        // //Square Root Function
-        // template <class PyObject>
-        // friend PyObject sqrt(PyObject &a);
-    
-        //Read and Write
-        template <class PyObject>
-        friend ostream& operator<<(ostream &, PyObject &);
-        template <class PyObject>
-        friend istream& operator>>(istream &, PyObject &);
+    // // Power
+    // template <class PyObject>
+    // friend PyObject operator^(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject &PyObject::operator^=(const PyObject &);
+
+    // // Comparision
+    // template <class PyObject>
+    // friend bool operator==(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend bool operator!=(const PyObject &, const PyObject &);
+
+    // template <class PyObject>
+    // friend bool operator>(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend bool operator>=(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend bool operator<(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend bool operator<=(const PyObject &, const PyObject &);
+
+    // // Modulo
+    // template <class PyObject>
+    // friend PyObject operator%(const PyObject &, const PyObject &);
+    // template <class PyObject>
+    // friend PyObject &operator%=(PyObject &, const PyObject &);
+
+    // //Square Root Function
+    // template <class PyObject>
+    // friend PyObject sqrt(PyObject &a);
+
+    // Read and Write
+    template <typename T>
+    friend ostream &operator<<(ostream &os, const PyObject<T> &obj)
+    {
+        os << obj.value;
+        return os;
+    }
+    template <typename T>
+    friend istream &operator>>(istream &is, PyObject<T> &obj)
+    {
+        string s;
+        is >> s;
+        // PARSE THE TYPE FROM CONTEXT
+        obj.setValue(s);
+
+        return is;
+    }
 };
+#endif
