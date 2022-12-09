@@ -7,8 +7,7 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    PyObject<string> pyObj("123");
-    cout << pyObj.getValue();
-    cout << pyObj;
+    PyObject<string> a = pyInputObject("Test: ");
+    cout << a;
     return 0;
 }

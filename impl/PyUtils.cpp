@@ -8,6 +8,6 @@ string pyUtils::pyInput(string prompt)
 {
     cout << prompt;
     string val;
-    cin >> val;
+    getline(cin, val);
     return val;
 }

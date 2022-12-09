@@ -9,11 +9,14 @@ class PyObject {
         PrimType value;
         string pyType;
     public:
-        PyObject(PyObject &);
+        PyObject();
+        PyObject(const PyObject &);
         PyObject(const PrimType &);
 
         PrimType getValue();
         void setValue(PrimType newValue);
+
+        string getPyType();
 
         // Assignment
         PyObject &operator=(const PyObject<PrimType> &);
@@ -77,12 +80,9 @@ class PyObject {
         // template <class PyObject>
         // friend PyObject sqrt(PyObject &a);
     
-        // //Read and Write
+        //Read and Write
         template <class PyObject>
-        ostream &operator<<(ostream &,const PyObject &);
+        friend ostream& operator<<(ostream &, PyObject &);
         template <class PyObject>
-        istream &operator>>(istream &, const PyObject &);
-
-
-
+        friend istream& operator>>(istream &, PyObject &);
 };
