@@ -89,6 +89,8 @@
     "xlocinfo": "cpp",
     "xmemory": "cpp",
     "xstddef": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "variant": "cpp",
+    "any": "cpp"
   }
 }
