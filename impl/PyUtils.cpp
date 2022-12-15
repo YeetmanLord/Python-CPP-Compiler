@@ -103,6 +103,28 @@ namespace python
         return obj;
     }
 
+    bool isInt(const string s) {
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.at(i);
+            if (i == 0 && c == '-') {
+                continue;
+            } else if (!isdigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    bool pyIsDigit(const string s) {
+        for (int i = 0; i < s.length(); ++i) {
+            char c = s.at(i);
+             if (!isdigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 } // namespace pyUtils
 
 #endif
