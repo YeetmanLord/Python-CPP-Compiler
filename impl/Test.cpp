@@ -9,13 +9,7 @@ using namespace python;
 
 int main(int argc, char const *argv[])
 {
-    PyString pyString = "Hello World!";
-    cout << pyString << endl;
-    char* stuff = new char[50];
-    for (int i = 0; i < 49; ++i) {
-        stuff[i] = 'a';
-    }
-    stuff[49] = '\0';
-    delete [] stuff;
+    unique_ptr<PyObject> pyString = make_unique<PyString>(PyString("Hello World!"));
+    cout << pyString.get()->myType() << endl;
     return 0;
 }

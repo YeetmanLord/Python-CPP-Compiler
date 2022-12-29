@@ -22,8 +22,8 @@ namespace python
     int stringCount(const string s, string phrase)
     {
         int count = 0;
-        int size = phrase.size();
-        for (int x = 0; x < s.size() - size; x++)
+        size_t size = phrase.size();
+        for (int x = 0; x < s.size() - size + 1; x++)
         {
             string sub = s.substr(x, size);
             if (sub == phrase)
@@ -36,11 +36,11 @@ namespace python
     vector<string> stringSplit(const string s, string phrase)
     {
         const int lenArr = stringCount(s, phrase) + 1;
-        int size = phrase.size();
+        size_t size = phrase.size();
         vector<string> arr(lenArr);
-        int last = 0;
-        int index = 0;
-        for (int x = 0; x < s.size() - size; x++)
+        size_t last = 0;
+        size_t index = 0;
+        for (size_t x = 0; x < s.size() - size + 1; x++)
         {
             string sub = s.substr(x, size);
             if (sub == phrase)
@@ -54,19 +54,26 @@ namespace python
         arr[index] = s.substr(last, -1);
         return arr;
     }
+
     template <typename... TArgs>
     void pyPrintF(PyObject pStatement, TArgs... args)
     {
         string s = pStatement.toString();
         vector<string> split = stringSplit(s, "${pyreplace}");
-        auto values = {args...};
+        vector<any> values = {args...};
         int index = 0;
         for (auto i = values.begin(); i != values.end(); ++i)
         {
-            cout << &split[index];
-            cout << *i;
+            cout << *&split[index];
+            unique_ptr<PyObject> ptr = make_unique(*i);
+            type_info ptrT = typeid(ptr.get());
+            if (ptrT == typeid(PyString)) {
+                cout << dynamic_cast<PyString>(ptr.get());
+            }
+            cout << ;
             index++;
         }
+        cout << *&split[index];
         cout << endl;
     }
     template <typename... TArgs>
@@ -78,7 +85,7 @@ namespace python
         for (auto i = values.begin(); i != values.end(); ++i)
         {
             cout << *&split[index];
-            cout << any_cast<PyObject>(*i).toString();
+            cout << getObject(*i)->toString();
             index++;
         }
         cout << *&split[index];

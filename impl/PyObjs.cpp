@@ -139,105 +139,6 @@ namespace python
             return *this;
         }
 
-        // Increment
-        PyObject &operator++()
-        {
-            if (pyType == "int")
-            {
-                value = (any_cast<int>(value)) + 1;
-                return *this;
-            }
-            throw("Invalid Operation Exception: Cannot increment a " + pyType);
-        }
-        PyObject operator++(int temp)
-        {
-            if (pyType == "int")
-            {
-                PyObject aux;
-                aux = *this;
-                ++(*this);
-                return aux;
-            }
-            throw("Invalid Operation Exception: Cannot increment a " + pyType);
-        }
-        PyObject &operator--()
-        {
-            if (pyType == "int")
-            {
-                value = (any_cast<int>(value)) - 1;
-                return *this;
-            }
-            throw("Invalid Operation Exception: Cannot increment a " + pyType);
-        }
-        PyObject operator--(int temp)
-        {
-            if (pyType == "int")
-            {
-                PyObject aux;
-                aux = *this;
-                ++(*this);
-                return aux;
-            }
-            throw("Invalid Operation Exception: Cannot increment a " + pyType);
-        }
-
-        // Addition/Subtraction
-        friend PyObject operator+(const PyObject &obj1, const PyObject &obj2) {
-            if (obj1.pyType == "str") {
-                string val = any_cast<string>(obj1.value);
-                val += obj2.toString();
-            } 
-            return obj1;
-        }
-        friend PyObject operator-(const PyObject &, const PyObject &);
-        // friend PyObject &operator+=(PyObject &, const PyObject &);
-        // friend PyObject &operator-=(PyObject &, const PyObject &);
-
-        // // Multiplication/Division
-        // template <class PyObject>
-        // friend PyObject operator*(const PyObject &, const PyObject &);
-        // friend PyObject operator/(const PyObject &, const PyObject &);
-        // friend PyObject &operator*=(PyObject &, const PyObject &);
-        // friend PyObject &operator/=(PyObject &, const PyObject &);
-
-        // // Power
-        // template <class PyObject>
-        // friend PyObject operator^(const PyObject &, const PyObject &);
-        // friend PyObject &PyObject::operator^=(const PyObject &);
-
-        // // Comparision
-        // template <class PyObject>
-        // friend bool operator==(const PyObject &, const PyObject &);
-        // friend bool operator!=(const PyObject &, const PyObject &);
-
-        // friend bool operator>(const PyObject &, const PyObject &);
-        // friend bool operator>=(const PyObject &, const PyObject &);
-        // friend bool operator<(const PyObject &, const PyObject &);
-        // friend bool operator<=(const PyObject &, const PyObject &);
-
-        // // Modulo
-        // friend PyObject operator%(const PyObject &, const PyObject &);
-        // friend PyObject &operator%=(PyObject &, const PyObject &);
-
-        // Square Root Function
-        friend PyObject sqrt(PyObject &object)
-        {
-            PyObject newObj = object;
-            if (object.pyType == "int" || object.pyType == "float")
-            {
-                if (object.pyType == "int")
-                {
-                    newObj.value = sqrt(any_cast<int>(object.value));
-                }
-                else
-                {
-                    newObj.value = sqrt(any_cast<double>(object.value));
-                }
-                return object;
-            }
-            throw("Invalid Operation Exception: Cannot increment a " + object.pyType);
-        }
-
         // Read and Write
         friend ostream &operator<<(ostream &os, PyObject &obj)
         {
@@ -259,6 +160,10 @@ namespace python
         bool in(PyObject &other)
         {
             return false;
+        }
+
+        string myType() {
+            return "Obj";
         }
     };
 
@@ -338,6 +243,11 @@ namespace python
                 return newValue;
             }
 
+            friend ostream& operator<<(ostream& os, PyString& obj)
+            {
+                os << any_cast<string>(obj);
+                return os;
+            }
         
     };
 }

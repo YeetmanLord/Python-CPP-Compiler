@@ -1,0 +1,51 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.34.31937.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/maximus widmaier/coding/python cpp compiler/impl/test.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "3ddda1c82db6ac21355faee6156a62c3b3b9d9b205f81ceffa596aa361677f5e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/maximus widmaier/coding/python cpp compiler/impl/pyutils.cpp"
+          },
+          "hashes": {
+            "sha-256": "e0a0519578e4bf089e224d48a9898bf16a88900f879ef78d17b47dd1fc7dd849"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/maximus widmaier/coding/python cpp compiler/impl/pyobjs.cpp"
+          },
+          "hashes": {
+            "sha-256": "3846732af7011dd37ae7b00fadcc5197811ad1975318e661e8fbc9a6fef591bf"
+          }
+        }
+      ]
+    }
+  ]
+}
