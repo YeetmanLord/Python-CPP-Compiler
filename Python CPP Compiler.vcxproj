@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="impl\PyObjs.cpp" />
     <ClCompile Include="impl\PyUtils.cpp" />
+    <ClCompile Include="impl\ObjectUtils.cpp" />
     <ClCompile Include="impl\Test.cpp" />
   </ItemGroup>
   <ItemGroup>

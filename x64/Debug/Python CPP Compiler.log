@@ -1,12 +1,7 @@
-﻿  Test.cpp
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
-Test.obj : warning LNK4006: "bool __cdecl python::isInt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?isInt@python@@YA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl python::pyInput(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?pyInput@python@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "class python::PyObject __cdecl python::pyInputObject(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?pyInputObject@python@@YA?AVPyObject@1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "bool __cdecl python::pyIsDigit(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?pyIsDigit@python@@YA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "void __cdecl python::pyPrint(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?pyPrint@python@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "void __cdecl python::pyPrint(class python::PyObject)" (?pyPrint@python@@YAXVPyObject@1@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "int __cdecl python::stringCount(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?stringCount@python@@YAHV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@@Z) already defined in PyUtils.obj; second definition ignored
-Test.obj : warning LNK4006: "class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > __cdecl python::stringSplit(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?stringSplit@python@@YA?AV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@V43@@Z) already defined in PyUtils.obj; second definition ignored
-C:\Users\Maximus Widmaier\Coding\Python CPP Compiler\x64\Debug\Python CPP Compiler.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Python CPP Compiler.vcxproj -> C:\Users\Maximus Widmaier\Coding\Python CPP Compiler\x64\Debug\Python CPP Compiler.exe
+﻿  PyUtils.cpp
+C:\Users\Maximus Widmaier\Coding\Python CPP Compiler\impl\PyUtils.cpp(68,24): error C2039: 'toString': is not a member of 'std::any'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\any(110,7): message : see declaration of 'std::any'
+C:\Users\Maximus Widmaier\Coding\Python CPP Compiler\impl\PyUtils.cpp(84,24): error C2039: 'toString': is not a member of 'std::any'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\include\any(110,7): message : see declaration of 'std::any'
+  ObjectUtils.cpp
+  Generating Code...

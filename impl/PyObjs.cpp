@@ -175,6 +175,10 @@ namespace python
                 pyType = "str";
             }
 
+            string myType() {
+                return "String";
+            }
+
             PyString(PyObject &other)
             {
                 try

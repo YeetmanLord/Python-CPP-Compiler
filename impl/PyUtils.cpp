@@ -66,16 +66,13 @@ namespace python
         {
             cout << *&split[index];
             unique_ptr<PyObject> ptr = make_unique(*i);
-            type_info ptrT = typeid(ptr.get());
-            if (ptrT == typeid(PyString)) {
-                cout << dynamic_cast<PyString>(ptr.get());
-            }
-            cout << ;
+            cout << ptr.get()->toString;
             index++;
         }
         cout << *&split[index];
         cout << endl;
     }
+
     template <typename... TArgs>
     void pyPrintF(string pStatement, TArgs... args)
     {
@@ -85,7 +82,8 @@ namespace python
         for (auto i = values.begin(); i != values.end(); ++i)
         {
             cout << *&split[index];
-            cout << getObject(*i)->toString();
+            unique_ptr<PyObject> ptr = 
+            cout << i->toString();
             index++;
         }
         cout << *&split[index];
